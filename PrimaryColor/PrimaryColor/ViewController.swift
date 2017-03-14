@@ -1,0 +1,52 @@
+//
+//  ViewController.swift
+//  PrimaryColor
+//
+//  Created by Johnny Gu on 08/03/2017.
+//  Copyright © 2017 Johnny Gu. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+
+    let imageNames = ["berlin.jpg","club.jpg","glotze.jpg"]//,"markt.jpg","melone.jpg","strand.jpg"]
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return imageNames.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProcessTableViewCell.identifier, for: indexPath) as? ProcessTableViewCell else { return UITableViewCell() }
+        cell.processedImageView.image = UIImage(named: imageNames[indexPath.row])
+        cell.startRecoginize()
+        return cell
+    }
+}
+
+class ProcessTableViewCell: UITableViewCell {
+    @IBOutlet weak var processedImageView: UIImageView!
+    @IBOutlet weak var mainColorImageView: UIImageView!
+    
+    static let identifier = "ProcessTableViewCell"
+    func startRecoginize() {
+        PCProcesser().extractMainColor(from: processedImageView.image!) { (color) in
+            self.mainColorImageView.backgroundColor = color
+        }
+    }
+}

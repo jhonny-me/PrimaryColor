@@ -19,7 +19,7 @@ struct PCOptions: OptionSet {
     static let avoidWhite = PCOptions(rawValue: 1<<5)
     static let avoidBlack = PCOptions(rawValue: 1<<6)
     
-    static let defaultMaxOption: PCOptions = []//[.avoidBlack]
+    static let defaultMaxOption: PCOptions = [.onlyBrightColors]
 }
 
 protocol PrimaryColorProtocol {
@@ -152,7 +152,7 @@ extension PCProcesser: PrimaryColorProtocol {
                 }
             }
         }
-        return maxColorsFound.sorted()
+        return maxColorsFound.sorted().reversed()
     }
     
     fileprivate func filterDistictColors(colorCubes: [ColorCube], threshold: Double) -> [ColorCube] {

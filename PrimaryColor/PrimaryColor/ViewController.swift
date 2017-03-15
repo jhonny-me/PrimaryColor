@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
-    let imageNames = ["berlin.jpg","club.jpg","glotze.jpg"]//,"markt.jpg","melone.jpg","strand.jpg"]
+    let imageNames = ["berlin.jpg","club.jpg","glotze.jpg", "Wechat.png"]//,"markt.jpg","melone.jpg","strand.jpg"]
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -47,6 +47,12 @@ class ProcessTableViewCell: UITableViewCell {
     func startRecoginize() {
         PCProcesser().extractMainColor(from: processedImageView.image!) { (color) in
             self.mainColorImageView.backgroundColor = color
+            let layer = CAGradientLayer()
+            layer.frame = CGRect(origin: CGPoint.zero, size: self.processedImageView.frame.size)
+            layer.colors = [color.cgColor, UIColor.clear.cgColor]
+            layer.startPoint = CGPoint(x: 0, y: 0)
+            layer.endPoint = CGPoint(x: 1, y: 0)
+            self.processedImageView.layer.addSublayer(layer)
         }
     }
 }

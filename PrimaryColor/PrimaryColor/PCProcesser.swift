@@ -19,7 +19,7 @@ struct PCOptions: OptionSet {
     static let avoidWhite = PCOptions(rawValue: 1<<5)
     static let avoidBlack = PCOptions(rawValue: 1<<6)
     
-    static let defaultMaxOption: PCOptions = [.onlyBrightColors]
+    static let defaultMaxOption: PCOptions = [.onlyBrightColors, .avoidWhite]
 }
 
 protocol PrimaryColorProtocol {
@@ -59,10 +59,10 @@ extension PCProcesser: PrimaryColorProtocol {
                 colorCubes = self.filterDistictColors(colorCubes: colorCubes, threshold: PCProcesser.distictThreshold)
             }
             if options.contains(.avoidWhite) {
-                colorCubes = self.filterColors(colorCubes: colorCubes, from: UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1))
+                colorCubes = self.filterColors(colorCubes: colorCubes, from: UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 1))
             }
             if options.contains(.avoidBlack) {
-                colorCubes = self.filterColors(colorCubes: colorCubes, from: UIColor(colorLiteralRed: 1, green: 1, blue: 1, alpha: 1))
+                colorCubes = self.filterColors(colorCubes: colorCubes, from: UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 1))
             }
             colors.forEach({ colorCubes = self.filterColors(colorCubes: colorCubes, from: $0) })
             if options.contains(.orderByDarkness) {
@@ -185,7 +185,7 @@ extension PCProcesser: PrimaryColorProtocol {
             let green = Double(colorComponent[1]) - colorCube.greenAvg
             let blue = Double(colorComponent[2]) - colorCube.blueAvg
             let delta = sqrt(red*red + green*green + blue*blue)
-            if delta < 0.5 {
+            if delta >= 0.5 {
                 newColorCubes.append(colorCube)
             }
         }

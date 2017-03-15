@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,20 +32,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dnh-GN-wN6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="159.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="dnh-GN-wN6" secondAttribute="height" multiplier="1:1" id="aCv-3j-Sjn"/>
-                                                    </constraints>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wechat.png" translatesAutoresizingMaskIntoConstraints="NO" id="dnh-GN-wN6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="159.5"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VVw-z0-zze">
-                                                    <rect key="frame" x="171.5" y="0.0" width="203.5" height="159.5"/>
+                                                    <rect key="frame" x="375" y="0.0" width="0.0" height="159.5"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="VVw-z0-zze" secondAttribute="bottom" id="9i1-Qp-dDy"/>
                                                 <constraint firstAttribute="trailing" secondItem="VVw-z0-zze" secondAttribute="trailing" id="AF6-hT-utM"/>
-                                                <constraint firstItem="VVw-z0-zze" firstAttribute="leading" secondItem="dnh-GN-wN6" secondAttribute="trailing" constant="12" id="EAf-D8-DWo"/>
+                                                <constraint firstItem="VVw-z0-zze" firstAttribute="leading" secondItem="dnh-GN-wN6" secondAttribute="trailing" constant="20" id="EAf-D8-DWo"/>
                                                 <constraint firstItem="VVw-z0-zze" firstAttribute="top" secondItem="4Vn-f0-3cc" secondAttribute="top" id="LDE-ko-pCd"/>
                                                 <constraint firstItem="dnh-GN-wN6" firstAttribute="leading" secondItem="4Vn-f0-3cc" secondAttribute="leading" id="QQ5-EK-jhQ"/>
                                                 <constraint firstItem="dnh-GN-wN6" firstAttribute="top" secondItem="4Vn-f0-3cc" secondAttribute="top" id="V8K-n3-gjz"/>
@@ -82,4 +78,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Wechat.png" width="432" height="202"/>
+    </resources>
 </document>
